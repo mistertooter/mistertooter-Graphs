@@ -1,0 +1,269 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coding Graphics Portfolio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1020;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 70px 20px 40px;
+    }
+
+    .eyebrow {
+      color: #7dd3fc;
+      letter-spacing: 3px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 80px);
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .project-grid {
+      width: min(1100px, 92%);
+      margin: 30px auto 70px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #111827;
+      border: 1px solid #334155;
+      border-radius: 22px;
+      padding: 18px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .preview {
+      height: 170px;
+      border-radius: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+
+      background:
+        radial-gradient(circle at 20% 20%, #38bdf8, transparent 30%),
+        radial-gradient(circle at 80% 25%, #a855f7, transparent 30%),
+        radial-gradient(circle at 50% 85%, #22c55e, transparent 35%),
+        #172033;
+    }
+
+    .card h2 {
+      margin-top: 18px;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .card p {
+      color: #cbd5e1;
+      line-height: 1.5;
+      min-height: 68px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 16px;
+      color: #7dd3fc;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #94a3b8;
+      border-top: 1px solid #1f2937;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 45px;
+      }
+
+      .preview {
+        height: 150px;
+      }
+
+      .card p {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <p class="eyebrow">MY CODING PORTFOLIO</p>
+
+    <h1>Coding Graphics</h1>
+
+    <p class="subtitle">
+      A collection of interactive HTML, CSS and JavaScript
+      projects, animations and browser-based games.
+    </p>
+  </header>
+
+
+  <main class="project-grid">
+
+    <article class="card">
+      <div class="preview">
+        🌸 Flower Animation
+      </div>
+
+      <h2>Flower Animation</h2>
+
+      <p>
+        A colorful flower animation that begins as a bud
+        and gradually blooms.
+      </p>
+
+      <a href="flower-animation/index.html">
+        Open Project →
+      </a>
+    </article>
+
+
+    <article class="card">
+      <div class="preview">
+        🏒 Air Hockey
+      </div>
+
+      <h2>Air Hockey</h2>
+
+      <p>
+        A browser-based air hockey game created with
+        HTML, CSS and JavaScript.
+      </p>
+
+      <a href="air-hockey/index.html">
+        Open Project →
+      </a>
+    </article>
+
+
+    <article class="card">
+      <div class="preview">
+        👽 Alien Runner
+      </div>
+
+      <h2>Space Alien Runner</h2>
+
+      <p>
+        An alien races across rooftops while jumping
+        between buildings and avoiding danger.
+      </p>
+
+      <a href="space-alien-game/index.html">
+        Open Project →
+      </a>
+    </article>
+
+
+    <article class="card">
+      <div class="preview">
+        💎 Spinning Diamond
+      </div>
+
+      <h2>Spinning Diamond</h2>
+
+      <p>
+        A colorful geometric diamond that rotates
+        smoothly using browser animation.
+      </p>
+
+      <a href="spinning-diamond/index.html">
+        Open Project →
+      </a>
+    </article>
+
+
+    <article class="card">
+      <div class="preview">
+        🔵 Swirling Circles
+      </div>
+
+      <h2>Swirling Circles</h2>
+
+      <p>
+        Animated circles move and swirl in colorful
+        geometric patterns.
+      </p>
+
+      <a href="swirling-circles/index.html">
+        Open Project →
+      </a>
+    </article>
+
+
+    <article class="card">
+      <div class="preview">
+        📈 Trigonometry
+      </div>
+
+      <h2>Trigonometry in Motion</h2>
+
+      <p>
+        A visual animation demonstrating sine and cosine
+        waves in motion.
+      </p>
+
+      <a href="trigonometry-motion/index.html">
+        Open Project →
+      </a>
+    </article>
+
+  </main>
+
+
+  <footer>
+    Built with HTML, CSS and JavaScript
+  </footer>
+
+</body>
+</html>
+```
