@@ -1,0 +1,305 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Flower Bloom Animation</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(#081426, #102a43);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 7vw, 58px);
+    }
+
+    header p {
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .stage {
+      width: min(92vw, 700px);
+      aspect-ratio: 3 / 4;
+      position: relative;
+      overflow: hidden;
+      margin: 25px auto;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(255,255,255,0.15), transparent 35%),
+        linear-gradient(#113b59 0%, #176b87 45%, #153f2d 78%, #0b2b1e 100%);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .ground {
+      position: absolute;
+      bottom: -40px;
+      left: -10%;
+      width: 120%;
+      height: 190px;
+      border-radius: 50%;
+      background: #123c29;
+    }
+
+    .stem {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      width: 16px;
+      height: 0;
+      transform: translateX(-50%);
+      border-radius: 12px;
+      background: linear-gradient(90deg, #1d7b42, #65d16f);
+      animation: growStem 2.3s ease-out forwards;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 95px;
+      height: 48px;
+      background: #32a852;
+      border-radius: 100% 0 100% 0;
+      opacity: 0;
+    }
+
+    .leaf.left {
+      left: calc(50% - 92px);
+      bottom: 250px;
+      transform: rotate(-28deg) scale(0);
+      transform-origin: right center;
+      animation: leafLeft 1s 1.7s ease-out forwards;
+    }
+
+    .leaf.right {
+      left: calc(50% + 3px);
+      bottom: 320px;
+      transform: rotate(205deg) scale(0);
+      transform-origin: left center;
+      animation: leafRight 1s 2s ease-out forwards;
+    }
+
+    .flower {
+      position: absolute;
+      left: 50%;
+      bottom: 500px;
+      width: 220px;
+      height: 220px;
+      transform: translate(-50%, 50%) scale(0.12);
+      animation: bloom 3s 2.2s cubic-bezier(.2,.9,.3,1.2) forwards;
+    }
+
+    .petal {
+      position: absolute;
+      width: 80px;
+      height: 125px;
+      left: 70px;
+      top: 8px;
+      border-radius: 50% 50% 45% 45%;
+      transform-origin: 40px 102px;
+      background: linear-gradient(#ffb3df, #ff4aa2);
+      box-shadow: inset 0 0 20px rgba(255,255,255,.35);
+    }
+
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(45deg); }
+    .petal:nth-child(3) { transform: rotate(90deg); }
+    .petal:nth-child(4) { transform: rotate(135deg); }
+    .petal:nth-child(5) { transform: rotate(180deg); }
+    .petal:nth-child(6) { transform: rotate(225deg); }
+    .petal:nth-child(7) { transform: rotate(270deg); }
+    .petal:nth-child(8) { transform: rotate(315deg); }
+
+    .center {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      left: 70px;
+      top: 70px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #fff6a8 0 8%, transparent 9%),
+        radial-gradient(circle, #ffd84d 0 45%, #e59c12 70%, #a85e08 100%);
+      box-shadow: 0 0 28px rgba(255,210,50,.6);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0;
+      animation: sparkle 2s infinite alternate;
+    }
+
+    .s1 { left: 18%; top: 20%; animation-delay: 3.8s; }
+    .s2 { left: 72%; top: 17%; animation-delay: 4.2s; }
+    .s3 { left: 81%; top: 35%; animation-delay: 4.5s; }
+    .s4 { left: 23%; top: 42%; animation-delay: 4.8s; }
+
+    .controls {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #7dd3fc;
+      color: #082032;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 0 0 35px;
+      color: #7dd3fc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @keyframes growStem {
+      from {
+        height: 0;
+      }
+
+      to {
+        height: 410px;
+      }
+    }
+
+    @keyframes leafLeft {
+      to {
+        opacity: 1;
+        transform: rotate(-28deg) scale(1);
+      }
+    }
+
+    @keyframes leafRight {
+      to {
+        opacity: 1;
+        transform: rotate(205deg) scale(1);
+      }
+    }
+
+    @keyframes bloom {
+      0% {
+        transform: translate(-50%, 50%) scale(0.12) rotate(-8deg);
+      }
+
+      55% {
+        transform: translate(-50%, 50%) scale(1.08) rotate(3deg);
+      }
+
+      100% {
+        transform: translate(-50%, 50%) scale(1) rotate(0);
+      }
+    }
+
+    @keyframes sparkle {
+      from {
+        opacity: 0;
+        transform: scale(.5);
+      }
+
+      to {
+        opacity: .95;
+        transform: scale(1.4);
+        box-shadow: 0 0 18px white;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Flower Bloom</h1>
+    <p>CSS animation from stem growth to full bloom.</p>
+  </header>
+
+  <div class="stage" id="stage">
+
+    <div class="sparkle s1"></div>
+    <div class="sparkle s2"></div>
+    <div class="sparkle s3"></div>
+    <div class="sparkle s4"></div>
+
+    <div class="stem"></div>
+
+    <div class="leaf left"></div>
+    <div class="leaf right"></div>
+
+    <div class="flower">
+
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+
+      <div class="center"></div>
+
+    </div>
+
+    <div class="ground"></div>
+
+  </div>
+
+  <div class="controls">
+    <button onclick="restartAnimation()">
+      Replay Bloom
+    </button>
+  </div>
+
+  <a class="back-link" href="../index.html">
+    ← Back to Portfolio
+  </a>
+
+  <script>
+    function restartAnimation() {
+
+      const oldStage =
+        document.getElementById("stage");
+
+      const newStage =
+        oldStage.cloneNode(true);
+
+      oldStage.parentNode.replaceChild(
+        newStage,
+        oldStage
+      );
+
+    }
+  </script>
+
+</body>
+</html>
+```
